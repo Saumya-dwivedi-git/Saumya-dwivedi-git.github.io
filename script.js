@@ -1,9 +1,7 @@
-const portfolio={githubUsername:"Saumya-dwivedi-git",linkedinUsername:"YOUR_LINKEDIN_USERNAME",email:"saumyad743@gmail.com",workforceRepository:"workforce-deployment-agent"};
-const configured=value=>value&&!value.startsWith("YOUR_");
+const portfolio={github:"https://github.com/Saumya-dwivedi-git",linkedin:"https://www.linkedin.com/in/saumya-d-187965218",email:"saumyad743@gmail.com"};
 document.querySelectorAll(".email").forEach(link=>link.href="mailto:"+portfolio.email);
-document.querySelectorAll(".github").forEach(link=>{if(configured(portfolio.githubUsername)){link.href="https://github.com/"+portfolio.githubUsername;link.target="_blank";link.rel="noreferrer"}else{link.onclick=event=>event.preventDefault();link.title="Add your GitHub username in script.js"}});
-document.querySelectorAll(".linkedin").forEach(link=>{if(configured(portfolio.linkedinUsername)){link.href="https://www.linkedin.com/in/"+portfolio.linkedinUsername;link.target="_blank";link.rel="noreferrer"}else{link.onclick=event=>event.preventDefault();link.title="Add your LinkedIn username in script.js"}});
-const projectLink=document.querySelector(".project-link");if(configured(portfolio.githubUsername)){projectLink.href="https://github.com/"+portfolio.githubUsername+"/"+portfolio.workforceRepository;projectLink.target="_blank";projectLink.rel="noreferrer"}else{projectLink.onclick=event=>event.preventDefault();projectLink.title="Add your GitHub username in script.js"}
+document.querySelectorAll(".github").forEach(link=>{link.href=portfolio.github;link.target="_blank";link.rel="noreferrer"});
+document.querySelectorAll(".linkedin").forEach(link=>{link.href=portfolio.linkedin;link.target="_blank";link.rel="noreferrer"});
 const theme=document.querySelector(".theme");if(localStorage.getItem("portfolio-theme")==="light"){document.body.classList.add("light");theme.textContent="☾"}theme.addEventListener("click",()=>{const light=document.body.classList.toggle("light");theme.textContent=light?"☾":"☀";localStorage.setItem("portfolio-theme",light?"light":"dark")});
 const menu=document.querySelector(".menu"),links=document.querySelector(".links");menu.addEventListener("click",()=>{const open=links.classList.toggle("open");menu.setAttribute("aria-expanded",String(open))});links.querySelectorAll("a").forEach(link=>link.addEventListener("click",()=>{links.classList.remove("open");menu.setAttribute("aria-expanded","false")}));
 const header=document.querySelector("header");addEventListener("scroll",()=>header.classList.toggle("scrolled",scrollY>20));
